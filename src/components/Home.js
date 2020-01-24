@@ -26,17 +26,19 @@ export default class Home extends Component {
       <div>
         {loaded ? (
           games.map((game, index) => (
-            <div key={index} className="row align-items-center my-3">
+            <div key={index} className="row align-items-center my-4">
               <div className="col">
-                <h6>{game.title}</h6>
+                <h4>{game.title}</h4>
                 <p>{game.competition.name}</p>
-                <a href={game.url}>Watch the game here</a>
+                <a href={game.url} className="btn btn-primary">
+                  Watch the highlights here
+                </a>
               </div>
               <div className="col">
                 <img
                   src={game.thumbnail}
                   alt="game thumbnail"
-                  style={{ width: '100px', height: '100px' }}
+                  style={{ width: '150px', height: '150px' }}
                 />
               </div>
             </div>

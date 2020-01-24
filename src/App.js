@@ -11,9 +11,6 @@ function App() {
       </nav>
       <div className="container-fluid">
         <div className="row justify-content-center">
-          <h1>Goals Galore</h1>
-        </div>
-        <div className="row justify-content-center">
           <Home />
         </div>
       </div>
