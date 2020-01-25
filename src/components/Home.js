@@ -25,7 +25,7 @@ export default class Home extends Component {
     return (
       <div>
         {loaded ? (
-          games.map((game, index) => (
+          games.slice(0, 10).map((game, index) => (
             <div key={index} className="row align-items-center my-4">
               <div className="col">
                 <h4>{game.title}</h4>
@@ -38,8 +38,8 @@ export default class Home extends Component {
                 <iframe
                   title={game.title}
                   src={game.embed.substring(137, 181)}
-                  width="560"
-                  height="650"
+                  width="520"
+                  height="580"
                 ></iframe>
               </div>
             </div>
