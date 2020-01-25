@@ -22,38 +22,47 @@ export default class Home extends Component {
   render() {
     let { loaded, games } = this.state;
     let game = games[0];
+    if (game) {
+      let string = game.embed;
+      console.log(string.substring(137, 181));
+    }
+
+    games.forEach(game =>
+      console.log(game.embed.substring(137, 181)),
+    );
 
     return (
       <div>
         {loaded ? (
-          //   games.map((game, index) => (
-          //     <div key={index} className="row align-items-center my-4">
-          //       <div className="col">
-          //         <h4>{game.title}</h4>
-          //         <p>{game.competition.name}</p>
-          //         <a href={game.url} className="btn btn-primary">
-          //           Watch the highlights here
-          //         </a>
-          //       </div>
-          //       <div className="col">
-          //         <img
-          //           src={game.thumbnail}
-          //           alt="game thumbnail"
-          //           style={{ width: '150px', height: '150px' }}
-          //         />
-          //       </div>
-          //     </div>
-          //   ))
-          <div>
-            <h4>{game.title}</h4>
-            <iframe
-              title={game.title}
-              src="https://www.scorebat.com/embed/g/878324/?s=2"
-              width="560"
-              height="650"
-            ></iframe>
-          </div>
+          games.map((game, index) => (
+            <div key={index} className="row align-items-center my-4">
+              <div className="col">
+                <h4>{game.title}</h4>
+                <p>{game.competition.name}</p>
+                <a href={game.url} className="btn btn-primary">
+                  Watch the highlights here
+                </a>
+              </div>
+              <div className="col">
+                <iframe
+                  title={game.title}
+                  src={game.embed.substring(137, 181)}
+                  width="560"
+                  height="650"
+                ></iframe>
+              </div>
+            </div>
+          ))
         ) : (
+          //   <div>
+          //     <h4>{game.title}</h4>
+          //     <iframe
+          //       title={game.title}
+          //       src={game.embed.substring(137, 181)}
+          //       width="560"
+          //       height="650"
+          //     ></iframe>
+          //   </div>
           <p>Loading ... </p>
         )}
       </div>
