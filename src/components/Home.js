@@ -21,15 +21,6 @@ export default class Home extends Component {
 
   render() {
     let { loaded, games } = this.state;
-    let game = games[0];
-    if (game) {
-      let string = game.embed;
-      console.log(string.substring(137, 181));
-    }
-
-    games.forEach(game =>
-      console.log(game.embed.substring(137, 181)),
-    );
 
     return (
       <div>
@@ -54,15 +45,6 @@ export default class Home extends Component {
             </div>
           ))
         ) : (
-          //   <div>
-          //     <h4>{game.title}</h4>
-          //     <iframe
-          //       title={game.title}
-          //       src={game.embed.substring(137, 181)}
-          //       width="560"
-          //       height="650"
-          //     ></iframe>
-          //   </div>
           <p>Loading ... </p>
         )}
       </div>
