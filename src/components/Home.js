@@ -30,16 +30,12 @@ export default class Home extends Component {
               <div className="col">
                 <h4>{game.title}</h4>
                 <p>{game.competition.name}</p>
-                <a href={game.url} className="btn btn-primary">
-                  Watch the highlights here
-                </a>
               </div>
-              <div className="col">
+              <div className="embed-responsive embed-responsive-4by3 row align-items-center my-4">
                 <iframe
                   title={game.title}
                   src={game.embed.substring(137, 181)}
-                  width="520"
-                  height="580"
+                  className="embed-responsive-item"
                 ></iframe>
               </div>
             </div>
