@@ -7,7 +7,11 @@ export default class Home extends Component {
     this.state = {
       games: [],
       loaded: false,
+      competitions: [],
+      selectedComp: '',
     };
+
+    this.onSelect = this.onSelect.bind(this);
   }
 
   componentDidMount() {
@@ -15,30 +19,57 @@ export default class Home extends Component {
       this.setState({
         games: res.data,
         loaded: true,
+        competitions: res.data.map(item => item.competition),
       }),
     );
   }
 
+  onSelect(e) {
+    this.setState({
+      selectedComp: e.target.value,
+    });
+  }
+
   render() {
-    let { loaded, games } = this.state;
+    let { loaded, games, competitions } = this.state;
+    console.log(competitions);
 
     return (
-      <div>
+      <div className="conatiner justify-content-center">
+        <div className="row my-4 mx-auto">
+          <h4>Competitions</h4>
+          <div class="form-group mx-auto">
+            <select
+              className="form-control mx-3"
+              id="exampleFormControlSelect1"
+              onChange={this.onSelect}
+            >
+              {competitions.map(comp => (
+                <option>{comp.name}</option>
+              ))}
+            </select>
+          </div>
+        </div>
         {loaded ? (
           games.slice(0, 10).map((game, index) => (
-            <div key={index} className="row align-items-center my-4">
-              <div className="col">
-                <h4>{game.title}</h4>
-                <p>{game.competition.name}</p>
+            <>
+              <div
+                key={index}
+                className="row align-items-center my-4"
+              >
+                <div className="col">
+                  <h4>{game.title}</h4>
+                  <p>{game.competition.name}</p>
+                </div>
+                <div className="embed-responsive embed-responsive-4by3 row align-items-center my-4">
+                  <iframe
+                    title={game.title}
+                    src={game.embed.substring(137, 181)}
+                    className="embed-responsive-item"
+                  ></iframe>
+                </div>
               </div>
-              <div className="embed-responsive embed-responsive-4by3 row align-items-center my-4">
-                <iframe
-                  title={game.title}
-                  src={game.embed.substring(137, 181)}
-                  className="embed-responsive-item"
-                ></iframe>
-              </div>
-            </div>
+            </>
           ))
         ) : (
           <p>Loading ... </p>
