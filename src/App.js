@@ -1,5 +1,6 @@
 import React from 'react';
 import Home from './components/Home';
+import './App.css';
 
 function App() {
   return (
@@ -9,7 +10,7 @@ function App() {
           Goals Galore
         </a>
       </nav>
-      <div className="container-fluid">
+      <div className="container-fluid body">
         <div className="row justify-content-center">
           <Home />
         </div>
