@@ -1,12 +1,16 @@
 .body {
-  background-image: linear-gradient(
-    to left top,
-    #051937,
-    #002265,
-    #002894,
-    #0027c1,
-    #1412eb
-  );
+  background: #141e30; /* fallback for old browsers */
+  background: -webkit-linear-gradient(
+    to top,
+    #243b55,
+    #141e30
+  ); /* Chrome 10-25, Safari 5.1-6 */
+  background: linear-gradient(
+    to top,
+    #243b55,
+    #141e30
+  ); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+
   color: white;
   font-family: 'Muli', sans-serif;
 }

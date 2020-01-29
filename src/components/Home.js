@@ -32,20 +32,33 @@ export default class Home extends Component {
 
   render() {
     let { loaded, games, competitions } = this.state;
-    console.log(competitions);
+    if (competitions) {
+      const uniqueCompsList = [];
+      const map = new Map();
+      for (const item of competitions) {
+        if (!map.has(item.id)) {
+          map.set(item.id, true); // set any value to Map
+          uniqueCompsList.push({
+            id: item.id,
+            name: item.name,
+          });
+        }
+      }
+      competitions = uniqueCompsList;
+    }
 
     return (
       <div className="conatiner justify-content-center">
         <div className="row my-4 mx-auto">
           <h4>Competitions</h4>
-          <div class="form-group mx-auto">
+          <div className="form-group mx-auto">
             <select
               className="form-control mx-3"
               id="exampleFormControlSelect1"
               onChange={this.onSelect}
             >
               {competitions.map(comp => (
-                <option>{comp.name}</option>
+                <option key={comp.id}>{comp.name}</option>
               ))}
             </select>
           </div>
